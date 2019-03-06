@@ -7,18 +7,24 @@ public class MainLand {
     public static void main(String[] args) {
 
         
-       
-            
-        //Output A TimeLineEvent
+                
+        //Creating a Moder to store the text
+        Model dataModel = new Model();
+        
+        //Creating a View_DataInput to get Input value
+        View_DataInput input = new View_DataInput();
+        
+        //Creating a Control to execute the data
         Controller c = new Controller();
-        Model m = new Model();
+        
+        //Creating a Controller to Transfer all the value from the user input to Model
+        
+        
+        
+     
 
 
-        m.setFile();
-        File dataFile = m.getFile();
-        m.writerOrder(dataFile);
-        m.write(c.execute());
-        m.close();
+        
             
         
         

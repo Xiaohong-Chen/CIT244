@@ -44,11 +44,38 @@ public class Model {
         }
     }
 
-    public void write(Controller_TimelineEvent t) {
+    public void writeComputerHardware(ComputerHardware ch) {
 
-        writerTimeline.print(t.year+", ");
-        writerTimeline.println(t.description);
+        writerTimeline.print(ch.year+", ");
+        writerTimeline.print(ch.description+", ");
+        writerTimeline.print(ch.modelNumber+", ");
+        writerTimeline.print(ch.manufacturer+", ");
+        writerTimeline.print(ch.releaseYear+", ");
+        writerTimeline.print(ch.retailPriceIn2018+", ");
+        writerTimeline.print(" , ");
+        writerTimeline.println(ch.mostImportantSpecifications);
             
+    }
+    
+    public void writeComputerSystem(ComputerSystem cs){
+        writerTimeline.print(cs.year+", ");
+        writerTimeline.print(cs.description+", ");
+        writerTimeline.print(cs.modelNumber+", ");
+        writerTimeline.print(cs.manufacturer+", ");
+        writerTimeline.print(cs.releaseYear+", ");
+        writerTimeline.print(cs.retailPriceIn2018+", ");
+        writerTimeline.println("");
+        
+    }
+    
+    public void writeHumanInterest(HumanInterest hi){
+        writerTimeline.print(hi.year+", ");
+        writerTimeline.print(" , ");
+        writerTimeline.print(" , ");
+        writerTimeline.print(" , ");
+        writerTimeline.print(" , ");
+        writerTimeline.print(" , ");
+        writerTimeline.println("");
     }
     
     public void close(){

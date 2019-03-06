@@ -1,2 +1,0 @@
-Year, Description, ModelNumber, Manufacturer, ReleaseYear, RetailPriceIn2018, ReasonOfChoosing, MostImportantSpecifications, 
-2003, kdafjlfjalfkjafadfadfaf

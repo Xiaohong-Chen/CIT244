@@ -1,13 +1,13 @@
 package timelineevent;
 
-public class Controller_ComputerComponent extends Controller_TimelineEvent{
+public class ComputerComponent extends TimelineEvent{
     
     int modelNumber;
     int releaseYear;
     double retailPriceIn2018;
     String manufacturer;
 
-    public Controller_ComputerComponent(int modelNumber, int releaseYear, double retailPriceIn2018, String manufacturer, int year, String description) {
+    public ComputerComponent(int modelNumber, int releaseYear, double retailPriceIn2018, String manufacturer, int year, String description) {
         
         super(year, description);
         this.modelNumber = modelNumber;
@@ -16,6 +16,8 @@ public class Controller_ComputerComponent extends Controller_TimelineEvent{
         this.manufacturer = manufacturer;
         
     }
+    
+    
     
     
     

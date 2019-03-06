@@ -1,26 +1,35 @@
 package timelineevent;
 
+
 public class Controller {
 
-    public Controller_TimelineEvent execute() {
+    public void writeDataIntoModel(View_DataInput input, Model model) {
 
-            View_DataInput input = new View_DataInput();
+        if (input.choise == 4) {
 
-            input.choiseInput();
+            System.out.println("Please Input the Valid Number");
+            
+
+        } else {
 
             switch (input.choise) {
                 case 1:
+                    
                     input.computerSystemInput();
-                    return new Factory_ComputerSystem().factory(input);
+                    ComputerSystem cs = new ComputerSystem(input);
+                    model.writeComputerSystem(cs);
+                    //return new Factory_ComputerSystem().factory(input);
                 case 2:
                     input.computerHardwareInput();
-                    return new Factory_ComputerHardware().factory(input);
+                    ComputerHardware ch = new ComputerHardware(input);
+                    //return new Factory_ComputerHardware().factory(input);
                 case 3:
                     input.humanInterestInput();
-                    return new Factory_HumanInterest().factory(input);
-                
+
+                    //return new Factory_HumanInterest().factory(input);
             }
-        return null;
+        }
+        
     }
 
 }

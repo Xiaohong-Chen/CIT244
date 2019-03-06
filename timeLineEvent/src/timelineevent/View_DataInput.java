@@ -14,7 +14,7 @@ public class View_DataInput {
     String reasonOfChoosing;
     String mostImportantSpecifications;
     
-    public void choiseInput(){
+    View_DataInput(){
         
         Scanner userInput = new Scanner(System.in);
         
@@ -22,6 +22,7 @@ public class View_DataInput {
         System.out.println("----------- 1. COMPUTER SYSTEM   -----------");
         System.out.println("----------- 2. COMPUTER HARDWARE -----------");
         System.out.println("----------- 3. HUMAN INTEREST    -----------");
+        System.out.println("----------- 4. EXIT              -----------");
         System.out.println("--------------------------------------------");
         
         choise = userInput.nextInt();
