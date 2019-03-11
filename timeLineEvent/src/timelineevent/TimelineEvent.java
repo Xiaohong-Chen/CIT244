@@ -3,12 +3,14 @@ package timelineevent;
 public class TimelineEvent {
     
     int year;
+    String title;
     String description;
-
-    public TimelineEvent(int year, String description) {
+    
+    public TimelineEvent(View_DataInput di) {
         
-        this.year = year;
-        this.description = description;
+        year = di.year;
+        title = di.title;
+        description = di.description;
         
     }
     

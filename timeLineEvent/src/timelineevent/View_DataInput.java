@@ -3,18 +3,20 @@ package timelineevent;
 import java.util.Scanner;
 
 public class View_DataInput {
-
-    int choise;
-    int year;
-    int modelNumber;
-    int releaseYear;
-    double retailPriceIn2018;
-    String description;
-    String manufacturer;
-    String reasonOfChoosing;
-    String mostImportantSpecifications;
     
-    View_DataInput(){
+    public int choise;
+    public int year;
+    public int modelNumber;
+    public int releaseYear;
+    public double retailPriceIn2018;
+    public String title;
+    public String description;
+    public String manufacturer;
+    public String reasonOfChoosing;
+    public String mostImportantSpecifications;
+    
+   
+    public void choiseInput(){
         
         Scanner userInput = new Scanner(System.in);
         
@@ -31,6 +33,9 @@ public class View_DataInput {
     public void computerSystemInput() {
 
         Scanner userInput = new Scanner(System.in);
+        
+        System.out.println("Please Input The Title: ");
+        title = userInput.next();
 
         System.out.println("Please Input The Year(int): ");
         year = userInput.nextInt();
@@ -58,6 +63,9 @@ public class View_DataInput {
     public void computerHardwareInput() {
 
         Scanner userInput = new Scanner(System.in);
+        
+         System.out.println("Please Input The Title: ");
+        title = userInput.next();
 
         System.out.println("Please Input The Year(int): ");
         year = userInput.nextInt();
@@ -81,6 +89,9 @@ public class View_DataInput {
     public void humanInterestInput() {
 
         Scanner userInput = new Scanner(System.in);
+        
+         System.out.println("Please Input The Title: ");
+        title = userInput.next();
 
         System.out.println("Please Input The Year(int): ");
         year = userInput.nextInt();

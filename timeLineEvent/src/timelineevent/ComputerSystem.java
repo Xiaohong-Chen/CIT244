@@ -6,7 +6,7 @@ public class ComputerSystem extends ComputerComponent{
 
     public ComputerSystem(View_DataInput di) {
         
-        super(di.modelNumber, di.releaseYear, di.retailPriceIn2018, di.manufacturer, di.year, di.description);
+        super(di);
         reasonOfChoosing =di.reasonOfChoosing;
         
     }

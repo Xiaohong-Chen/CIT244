@@ -7,13 +7,13 @@ public class ComputerComponent extends TimelineEvent{
     double retailPriceIn2018;
     String manufacturer;
 
-    public ComputerComponent(int modelNumber, int releaseYear, double retailPriceIn2018, String manufacturer, int year, String description) {
+    public ComputerComponent(View_DataInput di) {
         
-        super(year, description);
-        this.modelNumber = modelNumber;
-        this.releaseYear = releaseYear;
-        this.retailPriceIn2018 = retailPriceIn2018;
-        this.manufacturer = manufacturer;
+        super(di);
+        modelNumber = di.modelNumber;
+        releaseYear = di.releaseYear;
+        retailPriceIn2018 = di.retailPriceIn2018;
+        manufacturer = di.manufacturer;
         
     }
     

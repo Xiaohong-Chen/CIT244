@@ -6,7 +6,7 @@ public class ComputerHardware extends ComputerComponent{
 
     public ComputerHardware(View_DataInput di) {
         
-        super(di.modelNumber, di.releaseYear, di.retailPriceIn2018, di.manufacturer, di.year, di.description);
+        super(di);
         mostImportantSpecifications = di.mostImportantSpecifications;
         
     }
