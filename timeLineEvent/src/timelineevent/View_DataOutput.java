@@ -1,8 +1,7 @@
 package timelineevent;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -11,6 +10,7 @@ public class View_DataOutput {
 
     public boolean submitControl = false;
     public boolean choiseControl = false;
+    public boolean backControl =true;
 
     public void displayAll(Controller c, Model m) throws Exception {
 
@@ -28,13 +28,12 @@ public class View_DataOutput {
 
         JPanel searchJPanel = getSearchJPanel();
 
-        
-
         JTextField searchJText = getSearchText();
         JButton searchJButton = getSearchButton("Enter Title");
+        JButton backJButton = getSearchButton("Back");
 
         for (int x = 0; x < teArray.length; x++) {
-            timelineJPanel.add(getTimelJLabel(teArray[x].title));
+            timelineJPanel.add(getTimelJLabel(teArray[x].title+"|"+teArray[x].year));
         }
 
         scroll.setViewportView(timelineJPanel);
@@ -42,7 +41,7 @@ public class View_DataOutput {
 
         searchJPanel.add(searchJText);
         searchJPanel.add(searchJButton);
-        
+        searchJPanel.add(backJButton);
 
         outputJFrame.add(detailJPanel);
         outputJFrame.add(searchJPanel);
@@ -57,7 +56,7 @@ public class View_DataOutput {
 
                         if ("ComputerSystem".equals(teArray[m].type)) {
                             detailJPanel.removeAll();
-                            ComputerSystem cs = (ComputerSystem)teArray[m];
+                            ComputerSystem cs = (ComputerSystem) teArray[m];
                             detailJPanel.add(getComponentLabel("TPYE:"));
                             detailJPanel.add(getTextArea(cs.type));
                             detailJPanel.add(getComponentLabel("TITLE:"));
@@ -81,8 +80,8 @@ public class View_DataOutput {
                             outputJFrame.setVisible(true);
 
                         } else if ("ComputerHardware".equals(teArray[m].type)) {
-                            ComputerHardware ch = (ComputerHardware)teArray[m];
-                            
+                            ComputerHardware ch = (ComputerHardware) teArray[m];
+
                             detailJPanel.removeAll();
                             detailJPanel.add(getComponentLabel("TPYE:"));
                             detailJPanel.add(getTextArea(ch.type));
@@ -107,8 +106,8 @@ public class View_DataOutput {
                             outputJFrame.setVisible(true);
 
                         } else if ("HumanInterest".equals(teArray[m].type)) {
-                            
-                            HumanInterest hi = (HumanInterest)teArray[m];
+
+                            HumanInterest hi = (HumanInterest) teArray[m];
                             detailJPanel.removeAll();
                             detailJPanel.add(getComponentLabel("TPYE:"));
                             detailJPanel.add(getTextArea(hi.type));
@@ -117,7 +116,7 @@ public class View_DataOutput {
                             detailJPanel.add(getComponentLabel("YEAR:"));
                             detailJPanel.add(getTextArea(String.valueOf(hi.year)));
                             detailJPanel.add(getComponentLabel("MODEL NUMBER:"));
-                           
+
                             detailJPanel.add(getComponentLabel("DESCRIPTION:"));
                             JTextArea ds = getTextArea(hi.description);
                             ds.setPreferredSize(new Dimension(300, 110));
@@ -131,7 +130,18 @@ public class View_DataOutput {
             }
 
         };
+        
+        ActionListener backListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                outputJFrame.setVisible(false);
+                backControl=false;
+                
+            }
+        };
 
+        
+        backJButton.addActionListener(backListener);
         searchJButton.addActionListener(submitListener);
     }
 
@@ -154,7 +164,7 @@ public class View_DataOutput {
         JTextArea ta = new JTextArea();
         ta.setPreferredSize(new Dimension(300, 20));
         ta.setOpaque(true);
-        ta.setBackground( new Color(250, 140, 130));
+        ta.setBackground(new Color(250, 140, 130));
         ta.setFont(new Font("Dialog", 1, 14));
         ta.setForeground(new Color(230, 230, 230));
         ta.setLineWrap(true);
@@ -174,7 +184,7 @@ public class View_DataOutput {
         p.setOpaque(true);
         p.setPreferredSize(new Dimension(300, 400));
         p.setBackground(new Color(250, 140, 130));
-        p.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 0));
+        p.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
 
         return p;
 
@@ -187,7 +197,7 @@ public class View_DataOutput {
         p.setOpaque(true);
         p.setPreferredSize(new Dimension(300, 30));
         p.setBackground(new Color(250, 140, 130));
-        p.setLayout(new GridLayout(1, 2));
+        p.setLayout(new GridLayout(1, 3));
 
         return p;
 
@@ -198,7 +208,7 @@ public class View_DataOutput {
         JPanel p = new JPanel();
         p.setOpaque(false);
         p.setBackground(new Color(250, 140, 130));
-        p.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 0));
+        p.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
 
         MatteBorder border = new MatteBorder(3, 0, 0, 0, new Color(250, 140, 130));
         p.setBorder(border);
@@ -227,8 +237,8 @@ public class View_DataOutput {
         JLabel l = new JLabel(Name, JLabel.CENTER);
         l.setOpaque(true);
         l.setBackground(new Color(250, 140, 130));
-        l.setPreferredSize(new Dimension(50, 50));
-
+        l.setPreferredSize(new Dimension(100, 50));
+        l.setFont(new Font("Dialog", 1, 11));
         l.setForeground(Color.WHITE);
         MatteBorder border = new MatteBorder(1, 1, 1, 1, Color.WHITE);
 
@@ -244,7 +254,7 @@ public class View_DataOutput {
         b.setPreferredSize(new Dimension(50, 30));
 
         b.setForeground(Color.WHITE);
-        MatteBorder border = new MatteBorder(1, 1, 1, 1, new Color(250, 140, 130));
+        MatteBorder border = new MatteBorder(1, 1, 1, 1, new Color(230, 230, 230));
 
         b.setBorder(border);
         return b;
@@ -266,7 +276,7 @@ public class View_DataOutput {
         return t;
 
     }
-    
+
     public JLabel getComponentLabel(String labelName) {
 
         JLabel lb = new JLabel(labelName, JLabel.LEFT);
@@ -274,8 +284,6 @@ public class View_DataOutput {
         lb.setOpaque(false);
         lb.setFont(new Font("Dialog", 1, 12));
         lb.setForeground(new Color(230, 230, 230));
-        
-        
 
         return lb;
 

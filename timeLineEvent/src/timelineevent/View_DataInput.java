@@ -9,7 +9,7 @@ public class View_DataInput extends View {
 
     public boolean submitControl = true;
     public boolean choiseControl = false;
-
+    public boolean backControl =true ;
 
     /*
     
@@ -124,66 +124,6 @@ public class View_DataInput extends View {
         return b;
     }
 
-    public void choiseInput() {
-        //Creating a JFrame for HumanInterest
-        JFrame chJFrame = getJrame("CHOISE");
-
-        //Creating a JPanel for JLabel and JTextField
-        JPanel p = getJPanel();
-
-        JLabel mainTitle = getMainTitleJLabel("TIMELINE");
-        JButton csJButton = getChoiseJButton("COMPUTER SYSTEM");
-        JButton chJButton = getChoiseJButton("COMPUTER HARDWARE");
-        JButton hiJButton = getChoiseJButton("HUMAN INTEREST");
-        JButton exJButton = getChoiseJButton("EXIT");
-
-        p.add(mainTitle);
-        p.add(csJButton);
-        p.add(chJButton);
-        p.add(hiJButton);
-        p.add(exJButton);
-
-        chJFrame.add(p);
-
-        chJFrame.setVisible(true);
-
-        ActionListener submitListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (e.getSource() == csJButton) {
-
-                    choise = 1;
-                    choiseControl = true;
-                    chJFrame.setVisible(false);
-                } else if (e.getSource() == chJButton) {
-                    choise = 2;
-                    choiseControl = true;
-                    chJFrame.setVisible(false);
-                } else if (e.getSource() == hiJButton) {
-                    choise = 3;
-                    choiseControl = true;
-                    chJFrame.setVisible(false);
-
-                } else if (e.getSource() == exJButton) {
-                    choise = 4;
-                    choiseControl = true;
-                    chJFrame.setVisible(false);
-                }
-
-            }
-
-        };
-        while (choiseControl == false) {
-            csJButton.addActionListener(submitListener);
-            chJButton.addActionListener(submitListener);
-            hiJButton.addActionListener(submitListener);
-            exJButton.addActionListener(submitListener);
-
-        }
-
-    }
-
     public JFrame getJrame(String name) {
 
         JFrame frame = new JFrame(name);
@@ -260,6 +200,64 @@ public class View_DataInput extends View {
 
         b.setBorder(border);
         return b;
+    }
+
+    public void choiseInput() {
+        //Creating a JFrame for HumanInterest
+        JFrame chJFrame = getJrame("CHOISE");
+
+        //Creating a JPanel for JLabel and JTextField
+        JPanel p = getJPanel();
+
+        JLabel mainTitle = getMainTitleJLabel("TIMELINE");
+        JButton csJButton = getChoiseJButton("COMPUTER SYSTEM");
+        JButton chJButton = getChoiseJButton("COMPUTER HARDWARE");
+        JButton hiJButton = getChoiseJButton("HUMAN INTEREST");
+        JButton exJButton = getChoiseJButton("SEARCH DISPLAY");
+
+        p.add(mainTitle);
+        p.add(csJButton);
+        p.add(chJButton);
+        p.add(hiJButton);
+        p.add(exJButton);
+
+        chJFrame.add(p);
+
+        chJFrame.setVisible(true);
+
+        ActionListener submitListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (e.getSource() == csJButton) {
+
+                    choise = 1;
+                    choiseControl = true;
+                    chJFrame.setVisible(false);
+                } else if (e.getSource() == chJButton) {
+                    choise = 2;
+                    choiseControl = true;
+                    chJFrame.setVisible(false);
+                } else if (e.getSource() == hiJButton) {
+                    choise = 3;
+                    choiseControl = true;
+                    chJFrame.setVisible(false);
+
+                } else if (e.getSource() == exJButton) {
+                    choise = 4;
+                    choiseControl = true;
+                    chJFrame.setVisible(false);
+                }
+
+            }
+
+        };
+        while (choiseControl == false) {
+            csJButton.addActionListener(submitListener);
+            chJButton.addActionListener(submitListener);
+            hiJButton.addActionListener(submitListener);
+            exJButton.addActionListener(submitListener);
+        }
     }
 
     public void computerSystemInput() {
@@ -346,54 +344,70 @@ public class View_DataInput extends View {
         p.add(submitButton);
 
         csJFrame.add(p);
-        //frame.add();
 
         csJFrame.setVisible(true);
 
         ActionListener submitListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                if("".equals(titleText.getText())){
+
+                if ("".equals(titleText.getText())) {
                     JOptionPane.showMessageDialog(new JFrame(), "TITLE Is Empty");
-                }else if("".equals(yearText.getText())){
+                    titleText.grabFocus();
+                } else if ("".equals(yearText.getText())) {
                     JOptionPane.showMessageDialog(new JFrame(), "YEAR Is Empty");
-                }else if("".equals(discriptionText.getText())){
+                    yearText.grabFocus();
+                } else if ("".equals(discriptionText.getText())) {
                     JOptionPane.showMessageDialog(new JFrame(), "DISCRIPTION Is Empty");
-                }else if("".equals(modelNumberText.getText())){
+                    discriptionText.grabFocus();
+                } else if ("".equals(modelNumberText.getText())) {
                     JOptionPane.showMessageDialog(new JFrame(), "RELEASE YEAR Is Empty");
-                }else if("".equals(releaseYearText.getText())){
+                    modelNumberText.grabFocus();
+                } else if ("".equals(releaseYearText.getText())) {
                     JOptionPane.showMessageDialog(new JFrame(), "RELEASE YEAR Is Empty");
-                }else if("".equals(retailPriceIn2018Text.getText())){
+                    releaseYearText.grabFocus();
+                } else if ("".equals(retailPriceIn2018Text.getText())) {
                     JOptionPane.showMessageDialog(new JFrame(), "RETAIL PRICE IN 2018 Is Empty");
-                }else if("".equals(manufacturerText.getText())){
+                    retailPriceIn2018Text.grabFocus();
+                } else if ("".equals(manufacturerText.getText())) {
                     JOptionPane.showMessageDialog(new JFrame(), "MANUFACTURER Is Empty");
-                }else if("".equals(reasonOfChoosingText.getText())){
-                    JOptionPane.showMessageDialog(new JFrame(), "REASON OF CHOOSING Is Empty");
-                }else{
+                    manufacturerText.grabFocus();
+                } else if ("".equals(reasonOfChoosingText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "MOST IMPORTANT SPECIFICATIONS Is Empty");
+                    reasonOfChoosingText.grabFocus();
+                } else {
 
-                try {
+                    try {
 
-                    title = titleText.getText();
-                    year = Integer.parseInt(yearText.getText());
-                    description = discriptionText.getText();
-                    modelNumber = Integer.parseInt(modelNumberText.getText());
-                    releaseYear = Integer.parseInt(releaseYearText.getText());
-                    retailPriceIn2018 = Double.valueOf(retailPriceIn2018Text.getText());
-                    manufacturer = manufacturerText.getText();
-                    reasonOfChoosing = reasonOfChoosingText.getText();
+                        title = titleText.getText();
+                        year = Integer.parseInt(yearText.getText());
+                        description = discriptionText.getText();
+                        modelNumber = Integer.parseInt(modelNumberText.getText());
+                        releaseYear = Integer.parseInt(releaseYearText.getText());
+                        retailPriceIn2018 = Double.valueOf(retailPriceIn2018Text.getText());
+                        manufacturer = manufacturerText.getText();
+                        reasonOfChoosing = reasonOfChoosingText.getText();
 
-                    csJFrame.setVisible(false);
-                    submitControl = false;
+                        submitControl = false;
+                        csJFrame.setVisible(false);
 
-                } catch (NumberFormatException ex) {
-
-                    JOptionPane.showMessageDialog(new JFrame(), "Please Do Valid Input!");
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(new JFrame(), "YEAR, MODELNUMBER, RELEASEYEAR, RETAILPRICE MUST BE NUMERIC");
+                    }
                 }
             }
-            }
-
         };
+
+        ActionListener backListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                csJFrame.setVisible(false);
+                backControl = false;
+                submitControl = false;
+            }
+        };
+
+        backButton.addActionListener(backListener);
         submitButton.addActionListener(submitListener);
     }
 
@@ -486,24 +500,64 @@ public class View_DataInput extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                title = titleText.getText();
-                year = Integer.parseInt(yearText.getText());
-                description = discriptionText.getText();
-                modelNumber = Integer.parseInt(modelNumberText.getText());
-                releaseYear = Integer.parseInt(releaseYearText.getText());
-                retailPriceIn2018 = Double.valueOf(retailPriceIn2018Text.getText());
-                manufacturer = manufacturerText.getText();
-                mostImportantSpecifications = mostImportantSpecificationsText.getText();
-                submitControl = true;
+                if ("".equals(titleText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "TITLE Is Empty");
+                    titleText.grabFocus();
+                } else if ("".equals(yearText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "YEAR Is Empty");
+                    yearText.grabFocus();
+                } else if ("".equals(discriptionText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "DISCRIPTION Is Empty");
+                    discriptionText.grabFocus();
+                } else if ("".equals(modelNumberText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "RELEASE YEAR Is Empty");
+                    modelNumberText.grabFocus();
+                } else if ("".equals(releaseYearText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "RELEASE YEAR Is Empty");
+                    releaseYearText.grabFocus();
+                } else if ("".equals(retailPriceIn2018Text.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "RETAIL PRICE IN 2018 Is Empty");
+                    retailPriceIn2018Text.grabFocus();
+                } else if ("".equals(manufacturerText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "MANUFACTURER Is Empty");
+                    manufacturerText.grabFocus();
+                } else if ("".equals(mostImportantSpecificationsText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "MOST IMPORTANT SPECIFICATIONS Is Empty");
+                    mostImportantSpecificationsText.grabFocus();
+                } else {
 
-                chJFrame.setVisible(false);
+                    try {
 
+                        title = titleText.getText();
+                        year = Integer.parseInt(yearText.getText());
+                        description = discriptionText.getText();
+                        modelNumber = Integer.parseInt(modelNumberText.getText());
+                        releaseYear = Integer.parseInt(releaseYearText.getText());
+                        retailPriceIn2018 = Double.valueOf(retailPriceIn2018Text.getText());
+                        manufacturer = manufacturerText.getText();
+                        mostImportantSpecifications = mostImportantSpecificationsText.getText();
+
+                        submitControl = false;
+                        chJFrame.setVisible(false);
+
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(new JFrame(), "YEAR, MODELNUMBER, RELEASEYEAR, RETAILPRICE MUST BE NUMERIC");
+                    }
+                }
             }
-
         };
-        while (submitControl == false) {
-            submitButton.addActionListener(submitListener);
-        }
+        ActionListener backListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chJFrame.setVisible(false);
+                backControl = false;
+                submitControl = false;
+            }
+        };
+
+        backButton.addActionListener(backListener);
+
+        submitButton.addActionListener(submitListener);
 
     }
 
@@ -554,21 +608,45 @@ public class View_DataInput extends View {
         ActionListener submitListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                title = titleText.getText();
-                year = Integer.parseInt(yearText.getText());
-                description = discriptionText.getText();
-                submitControl = false;
-                hiJFrame.setVisible(false);
+
+                if ("".equals(titleText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "TITLE Is Empty");
+                    titleText.grabFocus();
+                } else if ("".equals(yearText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "YEAR Is Empty");
+                    yearText.grabFocus();
+                } else if ("".equals(discriptionText.getText())) {
+                    JOptionPane.showMessageDialog(new JFrame(), "DISCRIPTION Is Empty");
+                    discriptionText.grabFocus();
+                } else {
+
+                    try {
+
+                        title = titleText.getText();
+                        year = Integer.parseInt(yearText.getText());
+                        description = discriptionText.getText();
+
+                        submitControl = false;
+                        hiJFrame.setVisible(false);
+
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(new JFrame(), "YEAR MUST BE NUMERIC");
+                    }
+                }
             }
         };
 
-        submitButton.addActionListener(submitListener);
+        ActionListener backListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hiJFrame.setVisible(false);
+                backControl = false;
+                submitControl = false;
+            }
+        };
 
-    }
-    
-    public boolean checkEmpty(){
-        
-        return false;
+        backButton.addActionListener(backListener);
+        submitButton.addActionListener(submitListener);
     }
 
 }
