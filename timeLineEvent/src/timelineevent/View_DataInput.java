@@ -1,26 +1,13 @@
 package timelineevent;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
 public class View_DataInput extends View {
 
-    public boolean submitControl = false;
+    public boolean submitControl = true;
     public boolean choiseControl = false;
 
 
@@ -284,49 +271,49 @@ public class View_DataInput extends View {
         JPanel p = getJPanel();
 
         //Creating a TITLE JLabel for ComputerSystem JFrame
-        JLabel titleLabel = getComponentLabel("TITLE :");
+        JLabel titleLabel = getComponentLabel("TITLE(String) :");
 
         //Creating a TITLE JTextField for ComputerSystem JFrame
         JTextField titleText = getComponentText();
 
         //Creating a YEAR JLabel for ComputerSystem JFrame
-        JLabel yearLabel = getComponentLabel("YEAR :");
+        JLabel yearLabel = getComponentLabel("YEAR(int) :");
 
         //Creating a YEAR JTextField for ComputerSystem JFrame
         JTextField yearText = getComponentText();
 
         //Creating a DISCRIPTION JLabel for ComputerSystem JFrame
-        JLabel discriptionLabel = getComponentLabel("DISCRIPTION :");
+        JLabel discriptionLabel = getComponentLabel("DISCRIPTION(String) :");
 
         //Creating a DISCRIPTION JTextField for ComputerSystem JFrame
         JTextArea discriptionText = getComponentTextArea();
 
         //Creating a MODEL NUMBER JLabel for ComputerSystem JFrame
-        JLabel modelNumberLabel = getComponentLabel("MODEL NUMBER :");
+        JLabel modelNumberLabel = getComponentLabel("MODEL NUMBER(int) :");
 
         //Creating a MODEL NUMBER  JTextField for ComputerSystem JFrame
         JTextField modelNumberText = getComponentText();
 
         //Creating a RELEASE YEAR JLabel for ComputerSystem JFrame
-        JLabel releaseYearLabel = getComponentLabel("RELEASE YEAR :");
+        JLabel releaseYearLabel = getComponentLabel("RELEASE YEAR(int) :");
 
         //Creating a RELEASE YEAR  JTextField for ComputerSystem JFrame
         JTextField releaseYearText = getComponentText();
 
         //Creating a RETAIL PRICE IN 2018 JLabel for ComputerSystem JFrame
-        JLabel retailPriceIn2018Label = getComponentLabel("RETAIL PRICE IN 2018 :");
+        JLabel retailPriceIn2018Label = getComponentLabel("RETAIL PRICE IN 2018(double) :");
 
         //Creating a RETAIL PRICE IN 2018  JTextField for ComputerSystem JFrame
         JTextField retailPriceIn2018Text = getComponentText();
 
         //Creating a MANUFACTURER JLabel for ComputerSystem JFrame
-        JLabel manufacturerLabel = getComponentLabel("MANUFACTURER :");
+        JLabel manufacturerLabel = getComponentLabel("MANUFACTURER(String) :");
 
         //Creating a MANUFACTURER JTextField for ComputerSystem JFrame
         JTextField manufacturerText = getComponentText();
 
         //Creating a REASON OF CHOOSING JLabel for ComputerSystem JFrame
-        JLabel reasonOfChoosingLabel = getComponentLabel("REASON OF CHOOSING :");
+        JLabel reasonOfChoosingLabel = getComponentLabel("REASON OF CHOOSING(String) :");
 
         //Creating a REASON OF CHOOSING JTextField for ComputerSystem JFrame
         JTextField reasonOfChoosingText = getComponentText();
@@ -360,29 +347,31 @@ public class View_DataInput extends View {
 
         csJFrame.add(p);
         //frame.add();
-       
+
         csJFrame.setVisible(true);
-        
-        KeyAdapter intkey = new KeyAdapter() {
-            
-            
-            @Override
-            public void keyPressed(KeyEvent e){
-                if(!(e.getKeyCode()>=KeyEvent.VK_0 && e.getKeyCode()<=KeyEvent.VK_9 || e.getKeyCode() == KeyEvent.VK_BACK_SPACE)){
-                     JOptionPane.showMessageDialog(new JFrame(), "Please Input Numeric!");
-                }
-            }
-        };
-        yearText.addKeyListener(intkey);
-        modelNumberText.addKeyListener(intkey);
-        releaseYearText.addKeyListener(intkey);
-        retailPriceIn2018Text.addKeyListener(intkey);
-        
-                    
 
         ActionListener submitListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
+                if("".equals(titleText.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "TITLE Is Empty");
+                }else if("".equals(yearText.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "YEAR Is Empty");
+                }else if("".equals(discriptionText.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "DISCRIPTION Is Empty");
+                }else if("".equals(modelNumberText.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "RELEASE YEAR Is Empty");
+                }else if("".equals(releaseYearText.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "RELEASE YEAR Is Empty");
+                }else if("".equals(retailPriceIn2018Text.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "RETAIL PRICE IN 2018 Is Empty");
+                }else if("".equals(manufacturerText.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "MANUFACTURER Is Empty");
+                }else if("".equals(reasonOfChoosingText.getText())){
+                    JOptionPane.showMessageDialog(new JFrame(), "REASON OF CHOOSING Is Empty");
+                }else{
+
                 try {
 
                     title = titleText.getText();
@@ -394,25 +383,18 @@ public class View_DataInput extends View {
                     manufacturer = manufacturerText.getText();
                     reasonOfChoosing = reasonOfChoosingText.getText();
 
+                    csJFrame.setVisible(false);
+                    submitControl = false;
+
                 } catch (NumberFormatException ex) {
-                    
 
-                    System.out.println("1111111111");
-
+                    JOptionPane.showMessageDialog(new JFrame(), "Please Do Valid Input!");
                 }
-                submitControl = true;
-
+            }
             }
 
         };
-        /*
-        
-         */
-
-        while (submitControl == false) {
-            submitButton.addActionListener(submitListener);
-        }
-
+        submitButton.addActionListener(submitListener);
     }
 
     public void computerHardwareInput() {
@@ -575,15 +557,18 @@ public class View_DataInput extends View {
                 title = titleText.getText();
                 year = Integer.parseInt(yearText.getText());
                 description = discriptionText.getText();
-                submitControl = true;
+                submitControl = false;
                 hiJFrame.setVisible(false);
             }
         };
-        while (submitControl == false) {
-            submitButton.addActionListener(submitListener);
 
-        }
+        submitButton.addActionListener(submitListener);
 
+    }
+    
+    public boolean checkEmpty(){
+        
+        return false;
     }
 
 }

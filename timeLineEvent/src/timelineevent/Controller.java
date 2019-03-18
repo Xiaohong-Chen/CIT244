@@ -19,6 +19,12 @@ public class Controller {
                     case 1:
                         
                         input.computerSystemInput();
+                        while(input.submitControl){
+                            System.out.println("Wait.......");
+                            System.out.close();
+                        }
+                        
+                        System.out.println("Done");
                         ComputerSystem cs = new ComputerSystem(input);
                         model.writeComputerSystem(cs);
                         break;
