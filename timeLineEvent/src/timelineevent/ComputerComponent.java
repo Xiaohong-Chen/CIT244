@@ -7,7 +7,7 @@ public class ComputerComponent extends TimelineEvent{
     double retailPriceIn2018;
     String manufacturer;
 
-    public ComputerComponent(View_DataInput di) {
+    public ComputerComponent(View di) {
         
         super(di);
         modelNumber = di.modelNumber;

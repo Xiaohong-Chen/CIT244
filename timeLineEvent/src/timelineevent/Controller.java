@@ -1,21 +1,23 @@
 package timelineevent;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Controller {
 
-    public void writeDataIntoModel(View_DataInput input, Model model) {
+    public void writeDataIntoModel( Model model) {
 
         boolean controlLoop = true;
 
         while (controlLoop) {
             try {
-
+                View_DataInput input = new View_DataInput();
                 input.choiseInput();
 
                 switch (input.choise) {
                     case 1:
+                        
                         input.computerSystemInput();
                         ComputerSystem cs = new ComputerSystem(input);
                         model.writeComputerSystem(cs);
@@ -49,7 +51,7 @@ public class Controller {
         
         Scanner userOutput = new Scanner(model.getFile());
             
-            int n=2;
+            int n=0;
             while(userOutput.hasNextLine()){
                 userOutput.nextLine();
                 n=n+1;
@@ -71,6 +73,58 @@ public class Controller {
             
             return s;
 
+    }
+    
+    public TimelineEvent[] getTimelineEventArray(Model m) throws Exception {
+
+        String[][] s = readDataFromModel(m);
+
+        TimelineEvent[] teArray = new TimelineEvent[s.length - 1];
+
+        for (int i = 1; i < s.length; i++) {
+            
+            if ("HumanInterest".equals(s[i][0])) {
+                View v = new View();
+                
+                v.tpye = s[i][0];
+                v.title = s[i][1];
+                v.year = Integer.parseInt(s[i][2].trim());
+                v.description = s[i][3];
+
+                teArray[i - 1] = new HumanInterest(v);
+            } else if ("ComputerSystem".equals(s[i][0])) {
+                View v = new View();
+                
+                v.tpye = s[i][0];            
+                v.title = s[i][1];
+                v.year = Integer.parseInt(s[i][2].trim());
+                v.description = s[i][3];
+                v.modelNumber = Integer.parseInt(s[i][4].trim());
+                v.manufacturer = s[i][5];
+                v.releaseYear  = Integer.parseInt(s[i][6].trim());
+                v.retailPriceIn2018 = Double.valueOf(s[i][7].trim());
+                v.reasonOfChoosing = s[i][8];
+
+                teArray[i - 1] = new ComputerSystem(v);
+            } else if ("ComputerHardware".equals(s[i][0])) {
+                View v = new View();
+                
+                v.tpye = s[i][0];
+                v.title = s[i][1];
+                v.year = Integer.parseInt(s[i][2].trim());
+                v.description = s[i][3];
+                v.modelNumber = Integer.parseInt(s[i][4].trim());
+                v.manufacturer = s[i][5];
+                v.releaseYear  = Integer.parseInt(s[i][6].trim());
+                v.retailPriceIn2018 = Double.valueOf(s[i][7].trim());
+                v.mostImportantSpecifications = s[i][9];
+
+                teArray[i - 1] = new ComputerHardware(v);
+
+            }
+        }
+        Arrays.sort(teArray);
+        return teArray;
     }
 
 }

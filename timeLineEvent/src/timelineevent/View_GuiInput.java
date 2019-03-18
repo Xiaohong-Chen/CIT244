@@ -1,202 +1,25 @@
 package timelineevent;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-public class View_DataInput extends View {
+public class View_GuiInput {
 
+    public int choise;
+    public int year;
+    public int modelNumber;
+    public int releaseYear;
+    public double retailPriceIn2018;
+    public String title;
+    public String description;
+    public String manufacturer;
+    public String reasonOfChoosing;
+    public String mostImportantSpecifications;
     public boolean submitControl = false;
-    public boolean choiseControl = false;
-
-
-    /*
     
-    public void choiseInput(){
-        
-        Scanner userInput = new Scanner(System.in);
-        
-        System.out.println("--------------------------------------------");
-        System.out.println("----------- 1. COMPUTER SYSTEM   -----------");
-        System.out.println("----------- 2. COMPUTER HARDWARE -----------");
-        System.out.println("----------- 3. HUMAN INTEREST    -----------");
-        System.out.println("----------- 4. EXIT              -----------");
-        System.out.println("--------------------------------------------");
-        
-        choise = userInput.nextInt();
-    }
-
-    public void computerSystemInput() {
-
-        Scanner userInput = new Scanner(System.in);
-        
-        System.out.println("Please Input The Title: ");
-        title = userInput.next();
-
-        System.out.println("Please Input The Year(int): ");
-        year = userInput.nextInt();
-
-        System.out.println("Please Input The Discription(String): ");
-        description = userInput.next();
-
-        System.out.println("Please Input The Model Number: ");
-        modelNumber = userInput.nextInt();
-
-        System.out.println("Please Input The Release Year: ");
-        releaseYear = userInput.nextInt();
-
-        System.out.println("Please Input The Retail Price In 2018: ");
-        retailPriceIn2018 = userInput.nextDouble();
-
-        System.out.println("Please Input The Maufacturer: ");
-        manufacturer = userInput.next();
-
-        System.out.println("Please Input The Reason Of Choosing: ");
-        reasonOfChoosing = userInput.next();
-
-    }
-
-    public void computerHardwareInput() {
-
-        Scanner userInput = new Scanner(System.in);
-        
-         System.out.println("Please Input The Title: ");
-        title = userInput.next();
-
-        System.out.println("Please Input The Year(int): ");
-        year = userInput.nextInt();
-
-        System.out.println("Please Input The Discription(String): ");
-        description = userInput.next();
-
-        System.out.println("Please Input The Model Number: ");
-        modelNumber = userInput.nextInt();
-
-        System.out.println("Please Input The Release Year: ");
-        releaseYear = userInput.nextInt();
-
-        System.out.println("Please Input The Retail Price In 2018: ");
-        retailPriceIn2018 = userInput.nextDouble();
-
-        System.out.println("Please Input The Most Important Specifications: ");
-        mostImportantSpecifications = userInput.next();
-    }
-
-    public void humanInterestInput() {
-
-        Scanner userInput = new Scanner(System.in);
-        
-         System.out.println("Please Input The Title: ");
-        title = userInput.next();
-
-        System.out.println("Please Input The Year(int): ");
-        year = userInput.nextInt();
-
-        System.out.println("Please Input The Discription(String): ");
-        description = userInput.next();
-
-    }
-     */
-    public JLabel getMainTitleJLabel(String labelName) {
-        JLabel lb = new JLabel(labelName, JLabel.CENTER);
-        lb.setPreferredSize(new Dimension(300, 300));
-        lb.setOpaque(true);
-        lb.setFont(new Font("Dialog", 1, 50));
-        lb.setForeground(new Color(245, 95, 80));
-        MatteBorder border = new MatteBorder(2, 2, 2, 2, new Color(250, 140, 130));
-
-        lb.setBorder(border);
-
-        return lb;
-    }
-
-    public JButton getChoiseJButton(String buttonName) {
-        JButton b = new JButton(buttonName);
-        b.setBackground(new Color(250, 140, 130));
-        b.setPreferredSize(new Dimension(150, 150));
-        b.setFont(new Font("Dialog", 1, 12));
-
-        b.setForeground(Color.WHITE);
-        MatteBorder border = new MatteBorder(1, 1, 1, 1, Color.WHITE);
-
-        b.setBorder(border);
-        return b;
-    }
-
-    public void choiseInput() {
-        //Creating a JFrame for HumanInterest
-        JFrame chJFrame = getJrame("CHOISE");
-
-        //Creating a JPanel for JLabel and JTextField
-        JPanel p = getJPanel();
-
-        JLabel mainTitle = getMainTitleJLabel("TIMELINE");
-        JButton csJButton = getChoiseJButton("COMPUTER SYSTEM");
-        JButton chJButton = getChoiseJButton("COMPUTER HARDWARE");
-        JButton hiJButton = getChoiseJButton("HUMAN INTEREST");
-        JButton exJButton = getChoiseJButton("EXIT");
-
-        p.add(mainTitle);
-        p.add(csJButton);
-        p.add(chJButton);
-        p.add(hiJButton);
-        p.add(exJButton);
-
-        chJFrame.add(p);
-
-        chJFrame.setVisible(true);
-
-        ActionListener submitListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (e.getSource() == csJButton) {
-
-                    choise = 1;
-                    choiseControl = true;
-                    chJFrame.setVisible(false);
-                } else if (e.getSource() == chJButton) {
-                    choise = 2;
-                    choiseControl = true;
-                    chJFrame.setVisible(false);
-                } else if (e.getSource() == hiJButton) {
-                    choise = 3;
-                    choiseControl = true;
-                    chJFrame.setVisible(false);
-
-                } else if (e.getSource() == exJButton) {
-                    choise = 4;
-                    choiseControl = true;
-                    chJFrame.setVisible(false);
-                }
-
-            }
-
-        };
-        while (choiseControl == false) {
-            csJButton.addActionListener(submitListener);
-            chJButton.addActionListener(submitListener);
-            hiJButton.addActionListener(submitListener);
-            exJButton.addActionListener(submitListener);
-
-        }
-
-    }
-
     public JFrame getJrame(String name) {
 
         JFrame frame = new JFrame(name);
@@ -205,7 +28,7 @@ public class View_DataInput extends View {
         frame.getContentPane().setBackground(new Color(230, 230, 230));
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        frame.setVisible(true);
         frame.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 100));
 
         return frame;
@@ -259,7 +82,7 @@ public class View_DataInput extends View {
         JPanel p = new JPanel();
         p.setPreferredSize(new Dimension(300, 600));
         p.setOpaque(false);
-        p.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 5));
+        p.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 1));
         return p;
     }
 
@@ -275,7 +98,7 @@ public class View_DataInput extends View {
         return b;
     }
 
-    public void computerSystemInput() {
+    public void setComputerSystemFrame() {
 
         //Creating a JFrame for Computer System
         JFrame csJFrame = getJrame("COMPUTER SYSTEM");
@@ -333,7 +156,6 @@ public class View_DataInput extends View {
 
         //Creating a Submit Button
         JButton submitButton = getJButton("SUBMIT");
-
         //Creating a Back Button
         JButton backButton = getJButton("BACK");
 
@@ -354,68 +176,15 @@ public class View_DataInput extends View {
 
         p.add(discriptionLabel);
         p.add(discriptionText);
-
         p.add(backButton);
         p.add(submitButton);
 
         csJFrame.add(p);
         //frame.add();
-       
         csJFrame.setVisible(true);
-        
-        KeyAdapter intkey = new KeyAdapter() {
-            
-            
-            @Override
-            public void keyPressed(KeyEvent e){
-                if(!(e.getKeyCode()>=KeyEvent.VK_0 && e.getKeyCode()<=KeyEvent.VK_9 || e.getKeyCode() == KeyEvent.VK_BACK_SPACE)){
-                     JOptionPane.showMessageDialog(new JFrame(), "Please Input Numeric!");
-                }
-            }
-        };
-        yearText.addKeyListener(intkey);
-        modelNumberText.addKeyListener(intkey);
-        releaseYearText.addKeyListener(intkey);
-        retailPriceIn2018Text.addKeyListener(intkey);
-        
-                    
-
-        ActionListener submitListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-
-                    title = titleText.getText();
-                    year = Integer.parseInt(yearText.getText());
-                    description = discriptionText.getText();
-                    modelNumber = Integer.parseInt(modelNumberText.getText());
-                    releaseYear = Integer.parseInt(releaseYearText.getText());
-                    retailPriceIn2018 = Double.valueOf(retailPriceIn2018Text.getText());
-                    manufacturer = manufacturerText.getText();
-                    reasonOfChoosing = reasonOfChoosingText.getText();
-
-                } catch (NumberFormatException ex) {
-                    
-
-                    System.out.println("1111111111");
-
-                }
-                submitControl = true;
-
-            }
-
-        };
-        /*
-        
-         */
-
-        while (submitControl == false) {
-            submitButton.addActionListener(submitListener);
-        }
-
     }
 
-    public void computerHardwareInput() {
+    public void setComputerHardwareFrame() {
 
         //Creating a JFrame for ComputerHardware
         JFrame chJFrame = getJrame("COMPUTER HARDWARE");
@@ -499,33 +268,9 @@ public class View_DataInput extends View {
         chJFrame.add(p);
         //frame.add();
         chJFrame.setVisible(true);
-
-        ActionListener submitListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                title = titleText.getText();
-                year = Integer.parseInt(yearText.getText());
-                description = discriptionText.getText();
-                modelNumber = Integer.parseInt(modelNumberText.getText());
-                releaseYear = Integer.parseInt(releaseYearText.getText());
-                retailPriceIn2018 = Double.valueOf(retailPriceIn2018Text.getText());
-                manufacturer = manufacturerText.getText();
-                mostImportantSpecifications = mostImportantSpecificationsText.getText();
-                submitControl = true;
-
-                chJFrame.setVisible(false);
-
-            }
-
-        };
-        while (submitControl == false) {
-            submitButton.addActionListener(submitListener);
-        }
-
     }
 
-    public void humanInterestInput() {
+    public void setHumanInterestFrame() {
 
         //Creating a JFrame for HumanInterest
         JFrame hiJFrame = getJrame("HUMAN INTEREST");
@@ -555,6 +300,19 @@ public class View_DataInput extends View {
         JButton submitButton = getJButton("SUBMIT");
         //Creating a Back Button for HumanInterest JFrame
         JButton backButton = getJButton("BACK");
+
+        ActionListener submitListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                title = titleText.getText();
+                year = Integer.parseInt(yearText.getText());
+                description = discriptionText.getText();
+                
+                
+                
+            }
+        };
         p.add(titleLabel);
         p.add(titleText);
         p.add(yearLabel);
@@ -565,25 +323,65 @@ public class View_DataInput extends View {
         p.add(backButton);
         p.add(submitButton);
 
+        submitButton.addActionListener(submitListener);
+
         hiJFrame.add(p);
         //frame.add();
         hiJFrame.setVisible(true);
 
-        ActionListener submitListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                title = titleText.getText();
-                year = Integer.parseInt(yearText.getText());
-                description = discriptionText.getText();
-                submitControl = true;
-                hiJFrame.setVisible(false);
-            }
-        };
-        while (submitControl == false) {
-            submitButton.addActionListener(submitListener);
-
-        }
-
     }
+    
+    public JLabel getMainTitleJLabel(String labelName){
+        JLabel lb = new JLabel(labelName, JLabel.CENTER);
+        lb.setPreferredSize(new Dimension(300, 300));
+        lb.setOpaque(true);
+        lb.setFont(new Font("Dialog", 1, 50));
+        lb.setForeground(new Color(245, 95, 80));
+        MatteBorder border = new MatteBorder(2, 2, 2, 2, new Color(250, 140, 130));
 
+        lb.setBorder(border);
+        
+        return lb;
+    }
+    
+    public JButton getChoiseJButton(String buttonName) {
+        JButton b = new JButton(buttonName);
+        b.setBackground(new Color(250, 140, 130));
+        b.setPreferredSize(new Dimension(150, 150));
+        b.setFont(new Font("Dialog", 1, 12));
+       
+        b.setForeground(Color.WHITE);
+        MatteBorder border = new MatteBorder(1, 1, 1, 1, Color.WHITE);
+
+        b.setBorder(border);
+        return b;
+    }
+    
+    
+    
+    public void choiseInput(){
+        //Creating a JFrame for HumanInterest
+        JFrame chJFrame = getJrame("CHOISE");
+
+        //Creating a JPanel for JLabel and JTextField
+        JPanel p = getJPanel();
+        
+        JLabel mainTitle = getMainTitleJLabel("TIMELINE");
+        JButton csJButton = getChoiseJButton("COMPUTER SYSTEM");
+        JButton chJButton = getChoiseJButton("COMPUTER HARDWARE");
+        JButton hiJButton = getChoiseJButton("HUMAN INTEREST");
+        JButton dpJButton = getChoiseJButton("DISPLAY");
+        
+        
+        
+        p.add(mainTitle);
+        p.add(csJButton);
+        p.add(chJButton);
+        p.add(hiJButton);
+        p.add(dpJButton);
+        
+        chJFrame.add(p);
+        
+        
+    }
 }
