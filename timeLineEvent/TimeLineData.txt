@@ -1,0 +1,8 @@
+Tpye,Title,Year,Description,ModelNumber,Manufacturer,ReleaseYear,RetailPriceIn2018,ReasonOfChoosing,MostImportantSpecifications,
+ComputerSystem,1,1,222,1,1,1,1.0,1, ,
+ComputerSystem,22,2,1,1,1,1,1.0,1, ,
+ComputerSystem,2,2,2,2,2,2,2.0,2, ,
+ComputerSystem,2,2,111111111111111111111111111111111111111111111111111111111111111111111111111111111,2,1,2,2.0,1, ,
+ComputerSystem,1,1,1111111,1,1,1,1.0,1, ,
+ComputerHardware,11,11111,1ssssss,1,1,1,1.0, ,1,
+ComputerSystem,1,1,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,1,1,1,1.0,1, ,

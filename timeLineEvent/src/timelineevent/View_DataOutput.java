@@ -21,6 +21,8 @@ public class View_DataOutput {
         JPanel detailJPanel = getDisplayDetailJPanel();
 
         JPanel timelineJPanel = getTimelineJPanel();
+        
+        
 
         JScrollPane scroll = getJScrollPane();
 
@@ -33,7 +35,12 @@ public class View_DataOutput {
         JButton backJButton = getSearchButton("Back");
 
         for (int x = 0; x < teArray.length; x++) {
-            timelineJPanel.add(getTimelJLabel(teArray[x].title+"|"+teArray[x].year));
+            
+            JPanel componentJPanel=getcomponentJPanel();
+            componentJPanel.add(getTimelJLabel(teArray[x].title+"|"+teArray[x].year));
+            componentJPanel.add(getTimelineDisplayJextArea(teArray[x].title, teArray[x].description));
+            
+            timelineJPanel.add(componentJPanel);
         }
 
         scroll.setViewportView(timelineJPanel);
@@ -43,8 +50,8 @@ public class View_DataOutput {
         searchJPanel.add(searchJButton);
         searchJPanel.add(backJButton);
 
-        outputJFrame.add(detailJPanel);
-        outputJFrame.add(searchJPanel);
+        //outputJFrame.add(detailJPanel);
+        //outputJFrame.add(searchJPanel);
         outputJFrame.add(scrollJPanel);
         outputJFrame.setVisible(true);
 
@@ -154,7 +161,7 @@ public class View_DataOutput {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
+        frame.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 50));
 
         return frame;
     }
@@ -207,10 +214,13 @@ public class View_DataOutput {
 
         JPanel p = new JPanel();
         p.setOpaque(false);
+        
+        
         p.setBackground(new Color(250, 140, 130));
-        p.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
-
-        MatteBorder border = new MatteBorder(3, 0, 0, 0, new Color(250, 140, 130));
+        //p.setBackground(Color.red);
+        p.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 25));
+        p.setPreferredSize(new Dimension(200, 9000));
+        MatteBorder border = new MatteBorder(0, 3, 0, 0, new Color(250, 140, 130));
         p.setBorder(border);
         return p;
 
@@ -219,7 +229,7 @@ public class View_DataOutput {
     public JPanel getScrollJPanel() {
         JPanel p = new JPanel();
         p.setOpaque(false);
-        p.setPreferredSize(new Dimension(500, 100));
+        p.setPreferredSize(new Dimension(400, 650));
         p.setLayout(new GridLayout(1, 1));
 
         return p;
@@ -234,13 +244,13 @@ public class View_DataOutput {
 
     public JLabel getTimelJLabel(String Name) {
 
-        JLabel l = new JLabel(Name, JLabel.CENTER);
-        l.setOpaque(true);
+        JLabel l = new JLabel(Name, JLabel.LEFT);
+        l.setOpaque(false);
         l.setBackground(new Color(250, 140, 130));
-        l.setPreferredSize(new Dimension(100, 50));
-        l.setFont(new Font("Dialog", 1, 11));
-        l.setForeground(Color.WHITE);
-        MatteBorder border = new MatteBorder(1, 1, 1, 1, Color.WHITE);
+        l.setPreferredSize(new Dimension(100, 25));
+        l.setFont(new Font("Dialog", 1, 12));
+        l.setForeground(new Color(250, 140, 130));
+        MatteBorder border = new MatteBorder(0, 0, 0, 0, Color.WHITE);
 
         l.setBorder(border);
         return l;
@@ -288,5 +298,38 @@ public class View_DataOutput {
         return lb;
 
     }
+    
+    public JTextArea getTimelineDisplayJextArea(String titleName, String discription){
+        
+        JTextArea ta = new JTextArea();
+        ta.setPreferredSize(new Dimension(400, 75));
+        ta.setOpaque(true);
+        ta.setBackground(new Color(250, 140, 130));
+        ta.setFont(new Font("Dialog", 1, 14));
+        ta.setForeground(new Color(230, 230, 230));
+        ta.setLineWrap(true);
+        ta.setText("Title: "+titleName+"\r\n"+"Discription: "+discription);
 
+        MatteBorder border = new MatteBorder(1, 1, 1, 1, new Color(230, 230, 230));
+
+        ta.setBorder(border);
+        return ta;
+        
+        
+    }
+
+    public JPanel getcomponentJPanel(){
+        JPanel p = new JPanel();
+        p.setOpaque(false);
+        
+        
+        p.setBackground(new Color(250, 140, 130));
+        //p.setBackground(Color.red);
+        p.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        p.setPreferredSize(new Dimension(400, 100));
+        MatteBorder border = new MatteBorder(0, 0, 0, 0, new Color(250, 140, 130));
+        p.setBorder(border);
+        return p;
+        
+    }
 }
