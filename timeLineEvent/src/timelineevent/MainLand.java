@@ -11,7 +11,7 @@ public class MainLand {
         Controller c = new Controller();
 
         //Creating a Controller to Transfer all the value from the user input to Model
-        c.writeDataIntoModel();
+        c.execute();
 
         
         

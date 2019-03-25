@@ -6,23 +6,26 @@ import java.util.Scanner;
 
 public class Controller {
 
-    public void writeDataIntoModel() {
+    public void execute() {
         
+        //Creating an instance of Model to Write and Read the data from text
         Model dataModel = new Model();
-
+        
+        //looping the function until System is closed
         boolean controlLoop = true;
-
         while (controlLoop) {
             try {
+                
+                //Creating an instance of View_DataInput
                 View_DataInput input = new View_DataInput();
+                //Creating an instance of View_DataOutput
                 View_DataOutput output = new View_DataOutput();
+                
+                //Checking the Choices
                 input.choiseInput();
-
                 switch (input.choise) {
                     case 1:
-
                         input.computerSystemInput();
-
                         while (input.submitControl) {
                             System.out.println("Wait.......");
                             System.out.close();
@@ -35,19 +38,16 @@ public class Controller {
                         break;
                     case 2:
                         input.computerHardwareInput();
-
                         while (input.submitControl) {
                             System.out.println("Wait.......");
                             System.out.close();
                         }
                         if (!input.backControl == false) {
-
                             ComputerHardware ch = new ComputerHardware(input);
                             dataModel.writeComputerHardware(ch);
                             break;
                         }
                         break;
-
                     case 3:
                         input.humanInterestInput();
                         while (input.submitControl) {
@@ -55,13 +55,11 @@ public class Controller {
                             System.out.close();
                         }
                         if (!input.backControl == false) {
-
                             HumanInterest hi = new HumanInterest(input);
                             dataModel.writeHumanInterest(hi);
                             break;
                         }
                         break;
-
                     case 4:
                         output.displayAll(this, dataModel);
                         while(output.backControl == true){
@@ -72,13 +70,11 @@ public class Controller {
                     default:
                         throw new Exception("Please Input the Valid Number");
                 }
-
             } catch (Exception ex) {
                 System.out.println("Please Input the Valid Number");
             }
         }
         dataModel.close();
-
     }
 
     public int getDataRow(Model model) throws FileNotFoundException {

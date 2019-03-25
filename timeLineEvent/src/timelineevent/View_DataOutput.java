@@ -267,7 +267,7 @@ public class View_DataOutput {
         t.setOpaque(true);
         t.setBackground(new Color(220, 220, 220));
         t.setFont(new Font("Dialog", 1, 14));
-        t.setForeground(new Color(255, 255, 255));
+        t.setForeground(new Color(250, 140, 130));
 
         MatteBorder border = new MatteBorder(1, 1, 1, 1, new Color(250, 140, 130));
 

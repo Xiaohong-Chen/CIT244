@@ -1,5 +1,5 @@
 Tpye,Title,Year,Description,ModelNumber,Manufacturer,ReleaseYear,RetailPriceIn2018,ReasonOfChoosing,MostImportantSpecifications,
-HumanInterest,1111,111,111, , , , , , ,
-HumanInterest,333,333,333, , , , , , ,
-HumanInterest,333,333,333, , , , , , ,
+ComputerSystem,1,1,1,1,1,1,1.0,1, ,
+ComputerSystem,111,111,1,11,1,1,1.0,1, ,
 ComputerHardware,2,2,2,2,2,2,2.0, ,2,
+HumanInterest,44444,444,444, , , , , , ,

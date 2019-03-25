@@ -9,10 +9,9 @@ public class View_DataInput extends View {
 
     public boolean submitControl = true;
     public boolean choiseControl = false;
-    public boolean backControl =true ;
+    public boolean backControl = true;
 
     /*
-    
     public void choiseInput(){
         
         Scanner userInput = new Scanner(System.in);
@@ -157,7 +156,7 @@ public class View_DataInput extends View {
         t.setOpaque(true);
         t.setBackground(new Color(220, 220, 220));
         t.setFont(new Font("Dialog", 1, 14));
-        t.setForeground(new Color(255, 255, 255));
+        t.setForeground(new Color(250, 140, 130));
 
         MatteBorder border = new MatteBorder(1, 1, 2, 2, new Color(250, 140, 130));
 
@@ -203,18 +202,20 @@ public class View_DataInput extends View {
     }
 
     public void choiseInput() {
-        //Creating a JFrame for HumanInterest
+        
+        //Creating a JFrame for Choise Input
         JFrame chJFrame = getJrame("CHOISE");
 
         //Creating a JPanel for JLabel and JTextField
         JPanel p = getJPanel();
-
+        
+        //Comfiguring the Components
         JLabel mainTitle = getMainTitleJLabel("TIMELINE");
         JButton csJButton = getChoiseJButton("COMPUTER SYSTEM");
         JButton chJButton = getChoiseJButton("COMPUTER HARDWARE");
         JButton hiJButton = getChoiseJButton("HUMAN INTEREST");
         JButton exJButton = getChoiseJButton("SEARCH DISPLAY");
-
+        
         p.add(mainTitle);
         p.add(csJButton);
         p.add(chJButton);
@@ -225,12 +226,12 @@ public class View_DataInput extends View {
 
         chJFrame.setVisible(true);
 
-        ActionListener submitListener = new ActionListener() {
+        //Creating Action Listener for Buttons
+        ActionListener choiceListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                
                 if (e.getSource() == csJButton) {
-
                     choise = 1;
                     choiseControl = true;
                     chJFrame.setVisible(false);
@@ -248,15 +249,15 @@ public class View_DataInput extends View {
                     choiseControl = true;
                     chJFrame.setVisible(false);
                 }
-
             }
-
         };
+        
+        //Adding the Action Listener to the Choice Buttons
         while (choiseControl == false) {
-            csJButton.addActionListener(submitListener);
-            chJButton.addActionListener(submitListener);
-            hiJButton.addActionListener(submitListener);
-            exJButton.addActionListener(submitListener);
+            csJButton.addActionListener(choiceListener);
+            chJButton.addActionListener(choiceListener);
+            hiJButton.addActionListener(choiceListener);
+            exJButton.addActionListener(choiceListener);
         }
     }
 
@@ -322,6 +323,7 @@ public class View_DataInput extends View {
         //Creating a Back Button
         JButton backButton = getJButton("BACK");
 
+        //Comfiguring the Components
         p.add(titleLabel);
         p.add(titleText);
         p.add(yearLabel);
@@ -347,10 +349,12 @@ public class View_DataInput extends View {
 
         csJFrame.setVisible(true);
 
+        //Creating Action Listener for Submit button
         ActionListener submitListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                
+                //Checking if the text field is empty or not 
                 if ("".equals(titleText.getText())) {
                     JOptionPane.showMessageDialog(new JFrame(), "TITLE Is Empty");
                     titleText.grabFocus();
@@ -378,7 +382,8 @@ public class View_DataInput extends View {
                 } else {
 
                     try {
-
+                        
+                        //Assigning the value 
                         title = titleText.getText();
                         year = Integer.parseInt(yearText.getText());
                         description = discriptionText.getText();
@@ -398,6 +403,7 @@ public class View_DataInput extends View {
             }
         };
 
+        //Creating Action Listener for Close button
         ActionListener backListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -406,7 +412,7 @@ public class View_DataInput extends View {
                 submitControl = false;
             }
         };
-
+        //Adding the Action Listener to Buttons
         backButton.addActionListener(backListener);
         submitButton.addActionListener(submitListener);
     }
