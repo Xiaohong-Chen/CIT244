@@ -1,6 +1,6 @@
 # Model-View-Controller Simulation
 
-Design patterns are approaches to software development that are optimized for individual use case. A design pattern could be as simple as
+Application about Timeline Event: Record, Display and Retrieve
 
 ## Designed for CIT-115
 
@@ -42,3 +42,5 @@ Design patterns are approaches to software development that are optimized for in
 ### STEP 7: Close the Application
 
 ![Close](close.JPG)
+
+### STEP 8: Run the Application AGAIN! See what happens!
