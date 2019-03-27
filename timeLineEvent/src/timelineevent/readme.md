@@ -27,3 +27,4 @@ Design patterns are approaches to software development that are optimized for in
 
 ![Run Button](choice.JPG)
 
+### STEP 4: Input the data about TimeLine Component! Take care to the Value Tpye!(You can try a WRONG type, "Surprise" will occur)
