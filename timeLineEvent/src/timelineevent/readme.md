@@ -38,3 +38,7 @@ Design patterns are approaches to software development that are optimized for in
 ### STEP 6: Display the Timeline Event! Right Panel is about ordered Timeline Event. Left Panel is about the details. If you want to look into the details about each Timeline Event, input the TITLE name in the end of the Left Panel and click the Button of "Enter Title". If you want to back to main page and input again, click the Button of "Back".
 
 ![Display Timeline](display.JPG)
+
+### STEP 7: Close the Application
+
+![Close](close.JPG)
