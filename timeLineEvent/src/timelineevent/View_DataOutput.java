@@ -18,17 +18,18 @@ public class View_DataOutput {
 
         JFrame outputJFrame = getJFrame("TIMELINE DISPLAY");
 
-        JPanel detailJPanel = getDisplayDetailJPanel();
+        JPanel textJPanel = gettextJPanel();
 
         JPanel timelineJPanel = getTimelineJPanel();
         
-        
+        JPanel displayJPanel = getDisplayDetailJPanel();
 
         JScrollPane scroll = getJScrollPane();
 
         JPanel scrollJPanel = getScrollJPanel();
 
         JPanel searchJPanel = getSearchJPanel();
+        
 
         JTextField searchJText = getSearchText();
         JButton searchJButton = getSearchButton("Enter Title");
@@ -37,7 +38,7 @@ public class View_DataOutput {
         for (int x = 0; x < teArray.length; x++) {
             
             JPanel componentJPanel=getcomponentJPanel();
-            componentJPanel.add(getTimelJLabel(teArray[x].title+"|"+teArray[x].year));
+            componentJPanel.add(getTimelJLabel(String.valueOf(teArray[x].year)));
             componentJPanel.add(getTimelineDisplayJextArea(teArray[x].title, teArray[x].description));
             
             timelineJPanel.add(componentJPanel);
@@ -50,8 +51,10 @@ public class View_DataOutput {
         searchJPanel.add(searchJButton);
         searchJPanel.add(backJButton);
 
-        //outputJFrame.add(detailJPanel);
-        //outputJFrame.add(searchJPanel);
+        displayJPanel.add(textJPanel);
+        displayJPanel.add(searchJPanel);
+        
+        outputJFrame.add(displayJPanel);
         outputJFrame.add(scrollJPanel);
         outputJFrame.setVisible(true);
 
@@ -62,72 +65,72 @@ public class View_DataOutput {
                     if (searchJText.getText().equals(teArray[m].title)) {
 
                         if ("ComputerSystem".equals(teArray[m].type)) {
-                            detailJPanel.removeAll();
+                            textJPanel.removeAll();
                             ComputerSystem cs = (ComputerSystem) teArray[m];
-                            detailJPanel.add(getComponentLabel("TPYE:"));
-                            detailJPanel.add(getTextArea(cs.type));
-                            detailJPanel.add(getComponentLabel("TITLE:"));
-                            detailJPanel.add(getTextArea(cs.title));
-                            detailJPanel.add(getComponentLabel("YEAR:"));
-                            detailJPanel.add(getTextArea(String.valueOf(cs.year)));
-                            detailJPanel.add(getComponentLabel("MODEL NUMBER:"));
-                            detailJPanel.add(getTextArea(String.valueOf(cs.modelNumber)));
-                            detailJPanel.add(getComponentLabel("RELEASE YEAR:"));
-                            detailJPanel.add(getTextArea(String.valueOf(cs.releaseYear)));
-                            detailJPanel.add(getComponentLabel("RETAIL PRICE IN 2018:"));
-                            detailJPanel.add(getTextArea(String.valueOf(cs.retailPriceIn2018)));
-                            detailJPanel.add(getComponentLabel("MAUFACTUREER:"));
-                            detailJPanel.add(getTextArea(cs.manufacturer));
-                            detailJPanel.add(getComponentLabel("REASON OF CHOOSING:"));
-                            detailJPanel.add(getTextArea(cs.reasonOfChoosing));
-                            detailJPanel.add(getComponentLabel("DESCRIPTION:"));
+                            textJPanel.add(getComponentLabel("TPYE:"));
+                            textJPanel.add(getTextArea(cs.type));
+                            textJPanel.add(getComponentLabel("TITLE:"));
+                            textJPanel.add(getTextArea(cs.title));
+                            textJPanel.add(getComponentLabel("YEAR:"));
+                            textJPanel.add(getTextArea(String.valueOf(cs.year)));
+                            textJPanel.add(getComponentLabel("MODEL NUMBER:"));
+                            textJPanel.add(getTextArea(String.valueOf(cs.modelNumber)));
+                            textJPanel.add(getComponentLabel("RELEASE YEAR:"));
+                            textJPanel.add(getTextArea(String.valueOf(cs.releaseYear)));
+                            textJPanel.add(getComponentLabel("RETAIL PRICE IN 2018:"));
+                            textJPanel.add(getTextArea(String.valueOf(cs.retailPriceIn2018)));
+                            textJPanel.add(getComponentLabel("MAUFACTUREER:"));
+                            textJPanel.add(getTextArea(cs.manufacturer));
+                            textJPanel.add(getComponentLabel("REASON OF CHOOSING:"));
+                            textJPanel.add(getTextArea(cs.reasonOfChoosing));
+                            textJPanel.add(getComponentLabel("DESCRIPTION:"));
                             JTextArea ds = getTextArea(cs.description);
                             ds.setPreferredSize(new Dimension(300, 110));
-                            detailJPanel.add(ds);
+                            textJPanel.add(ds);
                             outputJFrame.setVisible(true);
 
                         } else if ("ComputerHardware".equals(teArray[m].type)) {
                             ComputerHardware ch = (ComputerHardware) teArray[m];
 
-                            detailJPanel.removeAll();
-                            detailJPanel.add(getComponentLabel("TPYE:"));
-                            detailJPanel.add(getTextArea(ch.type));
-                            detailJPanel.add(getComponentLabel("TITLE:"));
-                            detailJPanel.add(getTextArea(ch.title));
-                            detailJPanel.add(getComponentLabel("YEAR:"));
-                            detailJPanel.add(getTextArea(String.valueOf(ch.year)));
-                            detailJPanel.add(getComponentLabel("MODEL NUMBER:"));
-                            detailJPanel.add(getTextArea(String.valueOf(ch.modelNumber)));
-                            detailJPanel.add(getComponentLabel("RELEASE YEAR:"));
-                            detailJPanel.add(getTextArea(String.valueOf(ch.releaseYear)));
-                            detailJPanel.add(getComponentLabel("RETAIL PRICE IN 2018:"));
-                            detailJPanel.add(getTextArea(String.valueOf(ch.retailPriceIn2018)));
-                            detailJPanel.add(getComponentLabel("MAUFACTUREER:"));
-                            detailJPanel.add(getTextArea(ch.manufacturer));
-                            detailJPanel.add(getComponentLabel("MOST IMPORTANT SPECIFICATIONS:"));
-                            detailJPanel.add(getTextArea(ch.mostImportantSpecifications));
-                            detailJPanel.add(getComponentLabel("DESCRIPTION:"));
+                            textJPanel.removeAll();
+                            textJPanel.add(getComponentLabel("TPYE:"));
+                            textJPanel.add(getTextArea(ch.type));
+                            textJPanel.add(getComponentLabel("TITLE:"));
+                            textJPanel.add(getTextArea(ch.title));
+                            textJPanel.add(getComponentLabel("YEAR:"));
+                            textJPanel.add(getTextArea(String.valueOf(ch.year)));
+                            textJPanel.add(getComponentLabel("MODEL NUMBER:"));
+                            textJPanel.add(getTextArea(String.valueOf(ch.modelNumber)));
+                            textJPanel.add(getComponentLabel("RELEASE YEAR:"));
+                            textJPanel.add(getTextArea(String.valueOf(ch.releaseYear)));
+                            textJPanel.add(getComponentLabel("RETAIL PRICE IN 2018:"));
+                            textJPanel.add(getTextArea(String.valueOf(ch.retailPriceIn2018)));
+                            textJPanel.add(getComponentLabel("MAUFACTUREER:"));
+                            textJPanel.add(getTextArea(ch.manufacturer));
+                            textJPanel.add(getComponentLabel("MOST IMPORTANT SPECIFICATIONS:"));
+                            textJPanel.add(getTextArea(ch.mostImportantSpecifications));
+                            textJPanel.add(getComponentLabel("DESCRIPTION:"));
                             JTextArea ds = getTextArea(ch.description);
                             ds.setPreferredSize(new Dimension(300, 110));
-                            detailJPanel.add(ds);
+                            textJPanel.add(ds);
                             outputJFrame.setVisible(true);
 
                         } else if ("HumanInterest".equals(teArray[m].type)) {
 
                             HumanInterest hi = (HumanInterest) teArray[m];
-                            detailJPanel.removeAll();
-                            detailJPanel.add(getComponentLabel("TPYE:"));
-                            detailJPanel.add(getTextArea(hi.type));
-                            detailJPanel.add(getComponentLabel("TITLE:"));
-                            detailJPanel.add(getTextArea(hi.title));
-                            detailJPanel.add(getComponentLabel("YEAR:"));
-                            detailJPanel.add(getTextArea(String.valueOf(hi.year)));
-                            detailJPanel.add(getComponentLabel("MODEL NUMBER:"));
+                            textJPanel.removeAll();
+                            textJPanel.add(getComponentLabel("TPYE:"));
+                            textJPanel.add(getTextArea(hi.type));
+                            textJPanel.add(getComponentLabel("TITLE:"));
+                            textJPanel.add(getTextArea(hi.title));
+                            textJPanel.add(getComponentLabel("YEAR:"));
+                            textJPanel.add(getTextArea(String.valueOf(hi.year)));
+                            textJPanel.add(getComponentLabel("MODEL NUMBER:"));
 
-                            detailJPanel.add(getComponentLabel("DESCRIPTION:"));
+                            textJPanel.add(getComponentLabel("DESCRIPTION:"));
                             JTextArea ds = getTextArea(hi.description);
                             ds.setPreferredSize(new Dimension(300, 110));
-                            detailJPanel.add(ds);
+                            textJPanel.add(ds);
                             outputJFrame.setVisible(true);
 
                         }
@@ -156,12 +159,12 @@ public class View_DataOutput {
 
         JFrame frame = new JFrame(name);
         frame = new JFrame("TimeLine");
-        frame.setSize(600, 800);
+        frame.setSize(1000, 800);
         frame.getContentPane().setBackground(new Color(230, 230, 230));
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.setLayout(new FlowLayout(FlowLayout.RIGHT, 50, 50));
+        frame.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50));
 
         return frame;
     }
@@ -189,9 +192,9 @@ public class View_DataOutput {
         JPanel p = new JPanel();
 
         p.setOpaque(true);
-        p.setPreferredSize(new Dimension(300, 400));
+        p.setPreferredSize(new Dimension(400, 650));
         p.setBackground(new Color(250, 140, 130));
-        p.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
+        p.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50));
 
         return p;
 
@@ -218,9 +221,9 @@ public class View_DataOutput {
         
         p.setBackground(new Color(250, 140, 130));
         //p.setBackground(Color.red);
-        p.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 25));
-        p.setPreferredSize(new Dimension(200, 9000));
-        MatteBorder border = new MatteBorder(0, 3, 0, 0, new Color(250, 140, 130));
+        p.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 25));
+        p.setPreferredSize(new Dimension(200, 2000));
+        MatteBorder border = new MatteBorder(0, 0, 0, 0, new Color(250, 250, 250));
         p.setBorder(border);
         return p;
 
@@ -231,7 +234,7 @@ public class View_DataOutput {
         p.setOpaque(false);
         p.setPreferredSize(new Dimension(400, 650));
         p.setLayout(new GridLayout(1, 1));
-
+        
         return p;
     }
 
@@ -244,13 +247,13 @@ public class View_DataOutput {
 
     public JLabel getTimelJLabel(String Name) {
 
-        JLabel l = new JLabel(Name, JLabel.LEFT);
+        JLabel l = new JLabel(Name, JLabel.CENTER);
         l.setOpaque(false);
         l.setBackground(new Color(250, 140, 130));
-        l.setPreferredSize(new Dimension(100, 25));
+        l.setPreferredSize(new Dimension(50, 75));
         l.setFont(new Font("Dialog", 1, 12));
-        l.setForeground(new Color(250, 140, 130));
-        MatteBorder border = new MatteBorder(0, 0, 0, 0, Color.WHITE);
+        l.setForeground(new Color(150, 150, 150));
+        MatteBorder border = new MatteBorder(1, 0, 1, 0, new Color(150, 150, 150));
 
         l.setBorder(border);
         return l;
@@ -302,7 +305,7 @@ public class View_DataOutput {
     public JTextArea getTimelineDisplayJextArea(String titleName, String discription){
         
         JTextArea ta = new JTextArea();
-        ta.setPreferredSize(new Dimension(400, 75));
+        ta.setPreferredSize(new Dimension(275, 75));
         ta.setOpaque(true);
         ta.setBackground(new Color(250, 140, 130));
         ta.setFont(new Font("Dialog", 1, 14));
@@ -310,7 +313,7 @@ public class View_DataOutput {
         ta.setLineWrap(true);
         ta.setText("Title: "+titleName+"\r\n"+"Discription: "+discription);
 
-        MatteBorder border = new MatteBorder(1, 1, 1, 1, new Color(230, 230, 230));
+        MatteBorder border = new MatteBorder(0, 0, 0, 0, new Color(250, 140, 130));
 
         ta.setBorder(border);
         return ta;
@@ -325,10 +328,22 @@ public class View_DataOutput {
         
         p.setBackground(new Color(250, 140, 130));
         //p.setBackground(Color.red);
-        p.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        p.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
         p.setPreferredSize(new Dimension(400, 100));
         MatteBorder border = new MatteBorder(0, 0, 0, 0, new Color(250, 140, 130));
         p.setBorder(border);
+        return p;
+        
+    }
+    
+     public JPanel gettextJPanel(){
+        JPanel p = new JPanel();
+
+        p.setOpaque(true);
+        p.setPreferredSize(new Dimension(400, 500));
+        p.setBackground(new Color(250, 140, 130));
+        p.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 5));
+
         return p;
         
     }
