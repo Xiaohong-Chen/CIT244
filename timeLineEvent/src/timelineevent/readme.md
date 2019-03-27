@@ -25,6 +25,12 @@ Design patterns are approaches to software development that are optimized for in
 
 ### STEP 3: GUI is HERE! Choosing the choice that you want to RECORD!
 
-![Run Button](choice.JPG)
+![Choose Choice](choice.JPG)
 
-### STEP 4: Input the data about TimeLine Component! Take care to the Value Tpye!(You can try a WRONG type, "Surprise" will occur)
+### STEP 4: Input the data about TimeLine Component! Take care to the Value Tpye!(You can try a WRONG type, "Surprise" will occur)Then click the SUBMIT button!(If you don't want to save it, click the Back button)
+
+![Input Value](input.JPG)
+
+### STEP 5: Display the Timeline Event!
+
+![Input Value](input.JPG)
