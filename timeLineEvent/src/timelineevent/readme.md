@@ -21,3 +21,9 @@ Design patterns are approaches to software development that are optimized for in
 ### STEP 2: Cliking the Run button
 
 ![Run Button](runbutton.JPG)
+
+
+### STEP 3: GUI is HERE! Choosing the choice that you want to RECORD!
+
+![Run Button](runbutton.JPG)
+
